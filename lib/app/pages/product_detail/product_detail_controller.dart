@@ -1,10 +1,14 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-
-part 'product_detail_state.dart';
 
 class ProductDetailController extends Cubit<int> {
+  late final bool _hasOrder;
+
   ProductDetailController() : super(1);
+
+  initial(int amount, bool hasOrder) {
+    _hasOrder = hasOrder;
+    emit(amount);
+  }
 
   increment() => emit(state + 1);
 

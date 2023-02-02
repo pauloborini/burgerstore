@@ -14,7 +14,10 @@ import '../../core/ui/styles/text_styles.dart';
 import '../../core/ui/widgets/amount_button.dart';
 
 class ProductDetailPage extends StatefulWidget {
-  const ProductDetailPage({super.key});
+  final ProductModel product;
+  final OrderProductDto? orderProduct;
+
+  const ProductDetailPage({super.key, required this.product, required this.orderProduct});
 
   @override
   State<ProductDetailPage> createState() => _ProductDetailPageState();
@@ -23,10 +26,14 @@ class ProductDetailPage extends StatefulWidget {
 class _ProductDetailPageState
     extends BaseState<ProductDetailPage, ProductDetailController> {
   @override
+  void initState() {
+    super.initState();
+    final int amount = widget.orderProduct?.amount ?? 1;
+    controller.initial(amount, widget.orderProduct != null);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-    final OrderProductDto? orderProduct = args['order'];
-    final ProductModel product = args['product'];
     return Responsive.isTest(context)
         ? const Scaffold()
         : Scaffold(
@@ -50,14 +57,14 @@ class _ProductDetailPageState
                           width: double.maxFinite,
                           height: context.percentHeight(0.4),
                           child: Image.network(
-                            product.image,
+                            widget.product.image,
                             fit: BoxFit.cover,
                           ),
                         ),
                         const SizedBox(height: 20),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 15),
-                          child: Text(product.name,
+                          child: Text(widget.product.name,
                               style:
                                   TextStyles.instance.textXBold.copyWith(fontSize: 22)),
                         ),
@@ -66,7 +73,7 @@ class _ProductDetailPageState
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: SingleChildScrollView(
-                              child: AutoSizeText(product.description,
+                              child: AutoSizeText(widget.product.description,
                                   maxLines: 20,
                                   style: TextStyles.instance.textRegular
                                       .copyWith(fontSize: 18)),
@@ -95,7 +102,7 @@ class _ProductDetailPageState
                                 return InkWell(
                                   onTap: () {
                                     Navigator.of(context).pop(OrderProductDto(
-                                        product: product, amount: amount));
+                                        product: widget.product, amount: amount));
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
@@ -120,7 +127,7 @@ class _ProductDetailPageState
                                         Expanded(
                                           flex: 4,
                                           child: AutoSizeText(
-                                            (product.price * amount).currencyPtBR,
+                                            (widget.product.price * amount).currencyPtBR,
                                             minFontSize: 10,
                                             maxFontSize: 14,
                                             maxLines: 1,

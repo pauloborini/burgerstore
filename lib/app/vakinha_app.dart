@@ -3,7 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:vakinhaburger/app/core/provider/app_providers.dart';
 import 'package:vakinhaburger/app/core/ui/theme/theme_config.dart';
 import 'package:vakinhaburger/app/pages/home/home_page.dart';
-import 'package:vakinhaburger/app/pages/product_detail/product_detail_page.dart';
+import 'package:vakinhaburger/app/pages/home/home_route.dart';
+import 'package:vakinhaburger/app/pages/product_detail/product_detail_route.dart';
 
 import 'pages/start_page.dart';
 
@@ -21,8 +22,8 @@ class VakinhaApp extends StatelessWidget {
         initialRoute: "/",
         routes: {
           "/": (context) => const StartPage(),
-          "/home": (context) => const HomePage(),
-          "/product_detail": (context) => ProductDetailPage(),
+          "/home": (context) => HomeRoute.page,
+          "/product_detail": (context) => ProductDetailRoute.page,
         },
       ),
     );

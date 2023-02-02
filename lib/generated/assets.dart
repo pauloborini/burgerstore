@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+  static const String burgershop = '.env';
   static const String imagesLanche = 'assets/images/lanche.png';
   static const String imagesLoading = 'assets/images/loading.gif';
   static const String imagesLogo = 'assets/images/logo.png';
@@ -15,5 +16,4 @@ class Assets {
   static const String mplus1MPLUS1pLight = 'assets/fonts/mplus1/MPLUS1p-Light.ttf';
   static const String mplus1MPLUS1pMedium = 'assets/fonts/mplus1/MPLUS1p-Medium.ttf';
   static const String mplus1MPLUS1pRegular = 'assets/fonts/mplus1/MPLUS1p-Regular.ttf';
-  static const String vakinhaburger = '.env';
 }
