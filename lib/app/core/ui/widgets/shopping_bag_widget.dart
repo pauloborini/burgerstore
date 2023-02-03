@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:vakinhaburger/app/core/extensions/formatter_extension.dart';
-import 'package:vakinhaburger/app/core/ui/helpers/responsive.dart';
-import 'package:vakinhaburger/app/core/ui/styles/colors_app.dart';
+import 'package:burgerstore/app/core/extensions/formatter_extension.dart';
+import 'package:burgerstore/app/core/ui/helpers/responsive.dart';
+import 'package:burgerstore/app/core/ui/styles/colors_app.dart';
 
 import '../../../dto/order_product_dto.dart';
 import '../styles/text_styles.dart';

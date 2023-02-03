@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vakinhaburger/app/pages/product_detail/product_detail_controller.dart';
-import 'package:vakinhaburger/app/pages/product_detail/product_detail_page.dart';
+import 'package:burgerstore/app/pages/product_detail/product_detail_controller.dart';
+import 'package:burgerstore/app/pages/product_detail/product_detail_page.dart';
 
 class ProductDetailRoute {
   ProductDetailRoute._();

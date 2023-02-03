@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:vakinhaburger/app/core/ui/styles/colors_app.dart';
-import 'package:vakinhaburger/app/core/ui/widgets/delivery_button.dart';
+import 'package:burgerstore/app/core/ui/styles/colors_app.dart';
+import 'package:burgerstore/app/core/ui/widgets/delivery_button.dart';
 import 'package:validatorless/validatorless.dart';
 
 import '../../../../generated/assets.dart';
@@ -40,7 +40,14 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(toolbarHeight: 32),
+      appBar: AppBar(
+        toolbarHeight: 32,
+        leading: GestureDetector(
+            onTap: () {
+              Navigator.of(context).pop();
+            },
+            child: const Icon(Icons.arrow_back_ios_new)),
+      ),
       backgroundColor: Colors.white,
       body: GestureDetector(
         behavior: HitTestBehavior.opaque,

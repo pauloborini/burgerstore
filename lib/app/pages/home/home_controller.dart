@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:vakinhaburger/app/dto/order_product_dto.dart';
+import 'package:burgerstore/app/dto/order_product_dto.dart';
 
 import '../../repositories/products_repository/products_repository.dart';
 import 'home_state.dart';

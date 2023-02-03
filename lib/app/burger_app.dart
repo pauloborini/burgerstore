@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:vakinhaburger/app/core/provider/app_providers.dart';
-import 'package:vakinhaburger/app/core/ui/theme/theme_config.dart';
-import 'package:vakinhaburger/app/pages/auth/login/login_route.dart';
-import 'package:vakinhaburger/app/pages/home/home_route.dart';
-import 'package:vakinhaburger/app/pages/product_detail/product_detail_route.dart';
+import 'package:burgerstore/app/core/provider/app_providers.dart';
+import 'package:burgerstore/app/core/ui/theme/theme_config.dart';
+import 'package:burgerstore/app/pages/auth/login/login_route.dart';
+import 'package:burgerstore/app/pages/home/home_route.dart';
+import 'package:burgerstore/app/pages/product_detail/product_detail_route.dart';
 
 import 'pages/start_page.dart';
 
-class VakinhaApp extends StatelessWidget {
-  const VakinhaApp({super.key});
+class BurgerApp extends StatelessWidget {
+  const BurgerApp({super.key});
 
   @override
   Widget build(BuildContext context) {

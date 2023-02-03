@@ -1,6 +1,6 @@
-# vakinhaburger
+# burgerstore
 
-A new Flutter project.
+A Burger Store
 
 ## Getting Started
 

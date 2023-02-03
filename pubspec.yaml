@@ -1,5 +1,5 @@
-name: vakinhaburger
-description: A new Flutter project.
+name: burgerstore
+description: A Burger Store
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -44,16 +44,18 @@ dependencies:
   match: 0.4.1
   validatorless: 1.2.3
   shared_preferences: 2.0.17
-  modal_bottom_sheet: 3.0.0-pre
+  modal_bottom_sheet: 2.1.2
+  cupertino_icons: 1.0.5
+
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner:
+  build_runner: 2.3.3
   match_generator: 0.4.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -103,7 +105,6 @@ flutter:
       weight: 700
     - asset: assets/fonts/mplus1/MPLUS1p-ExtraBold.ttf
       weight: 800
-
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

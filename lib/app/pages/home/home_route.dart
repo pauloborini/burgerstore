@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vakinhaburger/app/pages/home/home_page.dart';
+import 'package:burgerstore/app/pages/home/home_page.dart';
 
 import '../../repositories/products_repository/products_repository.dart';
 import '../../repositories/products_repository/products_repository_impl.dart';

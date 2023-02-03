@@ -1,12 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:vakinhaburger/app/core/extensions/formatter_extension.dart';
-import 'package:vakinhaburger/app/core/ui/helpers/responsive.dart';
-import 'package:vakinhaburger/app/core/ui/styles/colors_app.dart';
-import 'package:vakinhaburger/app/dto/order_product_dto.dart';
-import 'package:vakinhaburger/app/models/product_model.dart';
-import 'package:vakinhaburger/app/pages/home/home_controller.dart';
+import 'package:burgerstore/app/core/extensions/formatter_extension.dart';
+import 'package:burgerstore/app/core/ui/helpers/responsive.dart';
+import 'package:burgerstore/app/core/ui/styles/colors_app.dart';
+import 'package:burgerstore/app/dto/order_product_dto.dart';
+import 'package:burgerstore/app/models/product_model.dart';
+import 'package:burgerstore/app/pages/home/home_controller.dart';
 
 import '../../../../generated/assets.dart';
 import '../styles/text_styles.dart';

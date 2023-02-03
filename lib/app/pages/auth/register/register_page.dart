@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vakinhaburger/app/core/ui/helpers/responsive.dart';
-import 'package:vakinhaburger/app/core/ui/widgets/delivery_button.dart';
+import 'package:burgerstore/app/core/ui/widgets/delivery_button.dart';
 import 'package:validatorless/validatorless.dart';
 
 import '../../../core/ui/styles/text_styles.dart';

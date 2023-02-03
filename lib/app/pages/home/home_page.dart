@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vakinhaburger/app/core/ui/widgets/product_item.dart';
-import 'package:vakinhaburger/app/core/ui/widgets/shopping_bag_widget.dart';
-import 'package:vakinhaburger/app/pages/home/home_controller.dart';
-import 'package:vakinhaburger/app/pages/home/home_state.dart';
+import 'package:burgerstore/app/core/ui/widgets/product_item.dart';
+import 'package:burgerstore/app/core/ui/widgets/shopping_bag_widget.dart';
+import 'package:burgerstore/app/pages/home/home_controller.dart';
+import 'package:burgerstore/app/pages/home/home_state.dart';
 
 import '../../core/ui/base_state/base_state.dart';
 import '../../core/ui/helpers/responsive.dart';

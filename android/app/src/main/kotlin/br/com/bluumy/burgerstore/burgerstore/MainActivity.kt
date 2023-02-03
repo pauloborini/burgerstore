@@ -1,4 +1,4 @@
-package br.com.bluumy.vakinhaburger.vakinhaburger
+package br.com.bluumy.burgerstore.burgerstore
 
 import io.flutter.embedding.android.FlutterActivity
 

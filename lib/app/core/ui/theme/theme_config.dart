@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:vakinhaburger/app/core/ui/styles/text_styles.dart';
+import 'package:burgerstore/app/core/ui/styles/text_styles.dart';
 
 import '../styles/app_styles.dart';
 import '../styles/colors_app.dart';

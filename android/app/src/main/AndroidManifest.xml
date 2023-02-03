@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.bluumy.vakinhaburger.vakinhaburger">
+    package="br.com.bluumy.burgerstore.burgerstore">
    <application
-        android:label="vakinhaburger"
+        android:label="burgerstore"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
