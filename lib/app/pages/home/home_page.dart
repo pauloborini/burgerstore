@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vakinhaburger/app/core/ui/widgets/product_item.dart';
+import 'package:vakinhaburger/app/core/ui/widgets/shopping_bag_widget.dart';
 import 'package:vakinhaburger/app/pages/home/home_controller.dart';
 import 'package:vakinhaburger/app/pages/home/home_state.dart';
 
@@ -24,10 +25,10 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    print(context.screenHeight.toString());
     return Responsive.isTest(context)
         ? const Scaffold()
         : Scaffold(
+            backgroundColor: Colors.white,
             appBar: BaseAppBar(appBar: AppBar()),
             body: Container(
               constraints: const BoxConstraints(maxWidth: 1440),
@@ -48,7 +49,6 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
                   return Center(
                       child: Column(
                     children: [
-                      Text(state.shoppingBag.length.toString()),
                       Expanded(
                         child: ListView.builder(
                           itemCount: state.products.length,
@@ -62,10 +62,16 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
                           },
                         ),
                       ),
+                      Visibility(
+                          visible: state.shoppingBag.isNotEmpty,
+                          child: ShoppingBagWidget(
+                            bag: state.shoppingBag,
+                          ))
                     ],
                   ));
                 },
               ),
-            ));
+            ),
+          );
   }
 }

@@ -35,10 +35,8 @@ class ThemeConfig {
       inputDecorationTheme: InputDecorationTheme(
           labelStyle: TextStyles.instance.textRegular.copyWith(color: Colors.black87),
           errorStyle: TextStyles.instance.textRegular.copyWith(color: Colors.redAccent),
-          fillColor: Colors.white,
-          filled: true,
-          isDense: true,
-          contentPadding: const EdgeInsets.all(13),
+          isDense: false,
+          contentPadding: const EdgeInsets.only(left: 20),
           border: _defaultInputBorder,
           enabledBorder: _defaultInputBorder,
           focusedBorder: _defaultInputBorder),

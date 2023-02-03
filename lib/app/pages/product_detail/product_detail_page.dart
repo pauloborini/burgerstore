@@ -145,8 +145,8 @@ class _ProductDetailPageState
                                     }
                                   },
                                   child: AnimatedContainer(
-                                      alignment: Alignment.center,
                                       duration: const Duration(milliseconds: 500),
+                                      alignment: Alignment.center,
                                       decoration: BoxDecoration(
                                         color: amount == 0
                                             ? Colors.red
@@ -154,7 +154,7 @@ class _ProductDetailPageState
                                         borderRadius: BorderRadius.circular(7),
                                       ),
                                       width: context.percentWidth(0.45),
-                                      padding: const EdgeInsets.all(8),
+                                      padding: const EdgeInsets.all(12),
                                       height: 49,
                                       child: amount == 0
                                           ? AutoSizeText(
@@ -167,23 +167,23 @@ class _ProductDetailPageState
                                                   .copyWith(
                                                       color: Colors.white, fontSize: 16),
                                             )
-                                          : Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceBetween,
+                                          : Stack(
                                               children: [
-                                                AutoSizeText(
-                                                  'Adicionar',
-                                                  minFontSize: 10,
-                                                  maxFontSize: 14,
-                                                  maxLines: 1,
-                                                  style: TextStyles.instance.textBold
-                                                      .copyWith(
-                                                          color: Colors.white,
-                                                          fontSize: 14),
+                                                Align(
+                                                  alignment: Alignment.centerLeft,
+                                                  child: AutoSizeText(
+                                                    'Adicionar',
+                                                    minFontSize: 10,
+                                                    maxFontSize: 14,
+                                                    maxLines: 1,
+                                                    style: TextStyles.instance.textBold
+                                                        .copyWith(
+                                                            color: Colors.white,
+                                                            fontSize: 14),
+                                                  ),
                                                 ),
-                                                const Spacer(),
-                                                Expanded(
-                                                  flex: 4,
+                                                Align(
+                                                  alignment: Alignment.centerRight,
                                                   child: AutoSizeText(
                                                     (widget.product.price * amount)
                                                         .currencyPtBR,
