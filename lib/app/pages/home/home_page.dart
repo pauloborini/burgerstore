@@ -24,6 +24,7 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    print(context.screenHeight.toString());
     return Responsive.isTest(context)
         ? const Scaffold()
         : Scaffold(

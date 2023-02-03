@@ -25,6 +25,42 @@ class ProductDetailPage extends StatefulWidget {
 
 class _ProductDetailPageState
     extends BaseState<ProductDetailPage, ProductDetailController> {
+  void _showConfirmDelete(int amount) {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Deseja remover o item?'),
+            actions: [
+              TextButton(
+                  style: ButtonStyle(
+                      overlayColor:
+                          MaterialStatePropertyAll(Colors.red.withOpacity(0.1))),
+                  onPressed: () {
+                    Navigator.of(context).pop(false);
+                  },
+                  child: Text(
+                    'Não',
+                    style: TextStyles.instance.textMedium
+                        .copyWith(fontSize: 16, color: Colors.red),
+                  )),
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(true);
+                    Navigator.of(context)
+                        .pop(OrderProductDto(product: widget.product, amount: amount));
+                  },
+                  child: Text(
+                    'Sim',
+                    style: TextStyles.instance.textMedium
+                        .copyWith(fontSize: 16, color: Colors.green),
+                  ))
+            ],
+          );
+        });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -101,44 +137,68 @@ class _ProductDetailPageState
                               builder: (context, amount) {
                                 return InkWell(
                                   onTap: () {
-                                    Navigator.of(context).pop(OrderProductDto(
-                                        product: widget.product, amount: amount));
+                                    if (amount == 0) {
+                                      _showConfirmDelete(amount);
+                                    } else {
+                                      Navigator.of(context).pop(OrderProductDto(
+                                          product: widget.product, amount: amount));
+                                    }
                                   },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: context.colors.primary,
-                                      borderRadius: BorderRadius.circular(7),
-                                    ),
-                                    width: context.percentWidth(0.45),
-                                    padding: const EdgeInsets.all(8),
-                                    height: 49,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        AutoSizeText(
-                                          'Adicionar',
-                                          minFontSize: 10,
-                                          maxFontSize: 14,
-                                          maxLines: 1,
-                                          style: TextStyles.instance.textBold
-                                              .copyWith(color: Colors.white),
-                                        ),
-                                        const Spacer(),
-                                        Expanded(
-                                          flex: 4,
-                                          child: AutoSizeText(
-                                            (widget.product.price * amount).currencyPtBR,
-                                            minFontSize: 10,
-                                            maxFontSize: 14,
-                                            maxLines: 1,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyles.instance.textBold
-                                                .copyWith(color: Colors.white),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                                  child: AnimatedContainer(
+                                      alignment: Alignment.center,
+                                      duration: const Duration(milliseconds: 500),
+                                      decoration: BoxDecoration(
+                                        color: amount == 0
+                                            ? Colors.red
+                                            : context.colors.primary,
+                                        borderRadius: BorderRadius.circular(7),
+                                      ),
+                                      width: context.percentWidth(0.45),
+                                      padding: const EdgeInsets.all(8),
+                                      height: 49,
+                                      child: amount == 0
+                                          ? AutoSizeText(
+                                              'Remover Item',
+                                              textAlign: TextAlign.center,
+                                              minFontSize: 12,
+                                              maxFontSize: 16,
+                                              maxLines: 1,
+                                              style: TextStyles.instance.textBold
+                                                  .copyWith(
+                                                      color: Colors.white, fontSize: 16),
+                                            )
+                                          : Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                AutoSizeText(
+                                                  'Adicionar',
+                                                  minFontSize: 10,
+                                                  maxFontSize: 14,
+                                                  maxLines: 1,
+                                                  style: TextStyles.instance.textBold
+                                                      .copyWith(
+                                                          color: Colors.white,
+                                                          fontSize: 14),
+                                                ),
+                                                const Spacer(),
+                                                Expanded(
+                                                  flex: 4,
+                                                  child: AutoSizeText(
+                                                    (widget.product.price * amount)
+                                                        .currencyPtBR,
+                                                    minFontSize: 10,
+                                                    maxFontSize: 14,
+                                                    maxLines: 1,
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyles.instance.textBold
+                                                        .copyWith(
+                                                            color: Colors.white,
+                                                            fontSize: 14),
+                                                  ),
+                                                ),
+                                              ],
+                                            )),
                                 );
                               },
                             ),

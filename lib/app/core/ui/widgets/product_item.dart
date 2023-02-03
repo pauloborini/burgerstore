@@ -26,7 +26,7 @@ class ProductItem extends StatelessWidget {
             '/product_detail',
             arguments: {'product': product, 'order': orderProduct});
         if (orderProductResult != null) {
-          controller.addOrUpdateBag(orderProductResult as OrderProductDto);
+          controller.crudBag(orderProductResult as OrderProductDto);
         }
       },
       child: Container(

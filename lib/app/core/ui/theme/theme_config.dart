@@ -13,6 +13,7 @@ class ThemeConfig {
       borderSide: BorderSide(color: Colors.grey.shade400));
 
   static final theme = ThemeData(
+      fontFamily: 'MPlus1p',
       primaryColor: ColorsApp.instance.primary,
       colorScheme: ColorScheme.fromSeed(
         seedColor: ColorsApp.instance.primary,
