@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'login_controller.dart';
 import 'login_page.dart';
 
 class LoginRoute {
@@ -8,7 +9,7 @@ class LoginRoute {
 
   static Widget get page => MultiProvider(
         providers: [
-          Provider(create: (context) => Object()),
+          Provider(create: (context) => LoginController(authRepository: context.read())),
         ],
         child: const LoginPage(),
       );

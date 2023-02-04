@@ -1,5 +1,9 @@
 import 'package:equatable/equatable.dart';
+import 'package:match/match.dart';
 
+part 'login_state.g.dart';
+
+@match
 enum LoginStatus { initial, login, success, loginError, error }
 
 class LoginState extends Equatable {
@@ -11,6 +15,20 @@ class LoginState extends Equatable {
     this.errorMessage,
   });
 
+  const LoginState.initial()
+      : status = LoginStatus.initial,
+        errorMessage = null;
+
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [status, errorMessage];
+
+  LoginState copyWith({
+    LoginStatus? status,
+    String? errorMessage,
+  }) {
+    return LoginState(
+      status: status ?? this.status,
+      errorMessage: errorMessage ?? this.errorMessage,
+    );
+  }
 }
