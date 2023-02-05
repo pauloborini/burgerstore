@@ -1,6 +1,4 @@
 import 'package:burgerstore/core/ui/styles/colors_app.dart';
-import 'package:burgerstore/pages/auth/login/login_controller.dart';
-import 'package:burgerstore/pages/auth/login/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -11,6 +9,8 @@ import '../../../core/ui/base_state/base_state.dart';
 import '../../../core/ui/styles/text_styles.dart';
 import '../../../core/ui/widgets/delivery_button.dart';
 import '../register/register_route.dart';
+import 'login_controller.dart';
+import 'login_state.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -95,26 +95,31 @@ class _LoginPageState extends BaseState<LoginPage, LoginController> {
                         child: Image.asset(Assets.imagesLogo, fit: BoxFit.contain),
                       ),
                       const SizedBox(height: 15),
-                      Text('Login', style: TextStyles.instance.textXBold.copyWith(fontSize: 28)),
+                      Text('Login', style: context.textStyles.xBold.copyWith(fontSize: 28)),
                       const SizedBox(height: 20),
                       TextFormField(
                           keyboardType: TextInputType.emailAddress,
                           controller: _emailController,
-                          validator: Validatorless.multiple([Validatorless.required('Email Obrigatório'), Validatorless.email('Email Inválido')]),
+                          validator: Validatorless.multiple([
+                            Validatorless.required('Email Obrigatório'),
+                            Validatorless.email('Email Inválido')
+                          ]),
                           decoration: InputDecoration(
                             labelText: 'Email',
-                            labelStyle: TextStyles.instance.textRegular,
+                            labelStyle: context.textStyles.regular,
                           )),
                       const SizedBox(height: 30),
                       TextFormField(
                           obscureText: _hidePassword,
                           keyboardType: TextInputType.number,
                           controller: _passwordController,
-                          validator: Validatorless.multiple(
-                              [Validatorless.required('Senha Obrigatória'), Validatorless.max(20, 'Senha pode ter no máximo 20 caracteres')]),
+                          validator: Validatorless.multiple([
+                            Validatorless.required('Senha Obrigatória'),
+                            Validatorless.max(20, 'Senha pode ter no máximo 20 caracteres')
+                          ]),
                           decoration: InputDecoration(
                             labelText: 'Senha',
-                            labelStyle: TextStyles.instance.textRegular,
+                            labelStyle: context.textStyles.regular,
                             suffixIcon: IconButton(
                               onPressed: () {
                                 setState(() {
@@ -134,7 +139,7 @@ class _LoginPageState extends BaseState<LoginPage, LoginController> {
                             onPressed: () {},
                             child: Text('Esqueceu a senha?',
                                 textAlign: TextAlign.right,
-                                style: TextStyles.instance.textMedium.copyWith(
+                                style: context.textStyles.medium.copyWith(
                                   color: context.colors.primary,
                                   fontSize: 16,
                                 )),
@@ -158,15 +163,16 @@ class _LoginPageState extends BaseState<LoginPage, LoginController> {
                         children: [
                           Text(
                             'Não possui conta?',
-                            style: TextStyles.instance.textMedium.copyWith(fontSize: 16),
+                            style: context.textStyles.medium.copyWith(fontSize: 16),
                           ),
                           TextButton(
                               onPressed: () {
-                                showBarModalBottomSheet(context: context, builder: (context) => RegisterRoute.page);
+                                showBarModalBottomSheet(
+                                    context: context, builder: (context) => RegisterRoute.page);
                               },
                               child: Text(
                                 'Cadastre-se',
-                                style: TextStyles.instance.textBold.copyWith(fontSize: 16),
+                                style: context.textStyles.bold.copyWith(fontSize: 16),
                               ))
                         ],
                       ),

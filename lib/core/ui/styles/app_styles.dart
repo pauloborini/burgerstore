@@ -14,7 +14,7 @@ class AppStyles {
   }
 
   ButtonStyle get primaryButton => ElevatedButton.styleFrom(
-      textStyle: TextStyles.instance.textButtonLabel,
+      textStyle: TextStyles.instance.buttonLabel,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(7),
       ),

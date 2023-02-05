@@ -23,8 +23,7 @@ class ProductDetailPage extends StatefulWidget {
   State<ProductDetailPage> createState() => _ProductDetailPageState();
 }
 
-class _ProductDetailPageState
-    extends BaseState<ProductDetailPage, ProductDetailController> {
+class _ProductDetailPageState extends BaseState<ProductDetailPage, ProductDetailController> {
   void _showConfirmDelete(int amount) {
     showDialog(
         context: context,
@@ -34,27 +33,22 @@ class _ProductDetailPageState
             title: const Text('Deseja remover o item?'),
             actions: [
               TextButton(
-                  style: ButtonStyle(
-                      overlayColor:
-                          MaterialStatePropertyAll(Colors.red.withOpacity(0.1))),
+                  style: ButtonStyle(overlayColor: MaterialStatePropertyAll(Colors.red.withOpacity(0.1))),
                   onPressed: () {
                     Navigator.of(context).pop(false);
                   },
                   child: Text(
                     'Não',
-                    style: TextStyles.instance.textMedium
-                        .copyWith(fontSize: 16, color: Colors.red),
+                    style: context.textStyles.medium.copyWith(fontSize: 16, color: Colors.red),
                   )),
               TextButton(
                   onPressed: () {
                     Navigator.of(context).pop(true);
-                    Navigator.of(context)
-                        .pop(OrderProductDto(product: widget.product, amount: amount));
+                    Navigator.of(context).pop(OrderProductDto(product: widget.product, amount: amount));
                   },
                   child: Text(
                     'Sim',
-                    style: TextStyles.instance.textMedium
-                        .copyWith(fontSize: 16, color: Colors.green),
+                    style: context.textStyles.medium.copyWith(fontSize: 16, color: Colors.green),
                   ))
             ],
           );
@@ -101,8 +95,7 @@ class _ProductDetailPageState
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 15),
                           child: Text(widget.product.name,
-                              style:
-                                  TextStyles.instance.textXBold.copyWith(fontSize: 22)),
+                              style: context.textStyles.xBold.copyWith(fontSize: 22)),
                         ),
                         const SizedBox(height: 5),
                         Expanded(
@@ -110,9 +103,7 @@ class _ProductDetailPageState
                             padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: SingleChildScrollView(
                               child: AutoSizeText(widget.product.description,
-                                  maxLines: 20,
-                                  style: TextStyles.instance.textRegular
-                                      .copyWith(fontSize: 18)),
+                                  maxLines: 20, style: context.textStyles.regular.copyWith(fontSize: 18)),
                             ),
                           ),
                         ),
@@ -140,17 +131,15 @@ class _ProductDetailPageState
                                     if (amount == 0) {
                                       _showConfirmDelete(amount);
                                     } else {
-                                      Navigator.of(context).pop(OrderProductDto(
-                                          product: widget.product, amount: amount));
+                                      Navigator.of(context)
+                                          .pop(OrderProductDto(product: widget.product, amount: amount));
                                     }
                                   },
                                   child: AnimatedContainer(
                                       duration: const Duration(milliseconds: 500),
                                       alignment: Alignment.center,
                                       decoration: BoxDecoration(
-                                        color: amount == 0
-                                            ? Colors.red
-                                            : context.colors.primary,
+                                        color: amount == 0 ? Colors.red : context.colors.primary,
                                         borderRadius: BorderRadius.circular(7),
                                       ),
                                       width: context.percentWidth(0.45),
@@ -163,9 +152,8 @@ class _ProductDetailPageState
                                               minFontSize: 12,
                                               maxFontSize: 16,
                                               maxLines: 1,
-                                              style: TextStyles.instance.textBold
-                                                  .copyWith(
-                                                      color: Colors.white, fontSize: 16),
+                                              style: context.textStyles.bold
+                                                  .copyWith(color: Colors.white, fontSize: 16),
                                             )
                                           : Stack(
                                               children: [
@@ -176,25 +164,20 @@ class _ProductDetailPageState
                                                     minFontSize: 10,
                                                     maxFontSize: 14,
                                                     maxLines: 1,
-                                                    style: TextStyles.instance.textBold
-                                                        .copyWith(
-                                                            color: Colors.white,
-                                                            fontSize: 14),
+                                                    style: context.textStyles.bold
+                                                        .copyWith(color: Colors.white, fontSize: 14),
                                                   ),
                                                 ),
                                                 Align(
                                                   alignment: Alignment.centerRight,
                                                   child: AutoSizeText(
-                                                    (widget.product.price * amount)
-                                                        .currencyPtBR,
+                                                    (widget.product.price * amount).currencyPtBR,
                                                     minFontSize: 10,
                                                     maxFontSize: 14,
                                                     maxLines: 1,
                                                     textAlign: TextAlign.center,
-                                                    style: TextStyles.instance.textBold
-                                                        .copyWith(
-                                                            color: Colors.white,
-                                                            fontSize: 14),
+                                                    style: context.textStyles.bold
+                                                        .copyWith(color: Colors.white, fontSize: 14),
                                                   ),
                                                 ),
                                               ],

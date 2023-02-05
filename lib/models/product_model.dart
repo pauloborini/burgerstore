@@ -7,13 +7,12 @@ class ProductModel {
   final double price;
   final String image;
 
-  const ProductModel({
-    required this.id,
-    required this.name,
-    required this.description,
-    required this.price,
-    required this.image,
-  });
+  const ProductModel(
+      {required this.id,
+      required this.name,
+      required this.description,
+      required this.price,
+      required this.image});
 
   Map<String, dynamic> toMap() {
     return {
@@ -35,6 +34,5 @@ class ProductModel {
     );
   }
 
-  factory ProductModel.fromJson(String source) =>
-      ProductModel.fromMap(json.decode(source));
+  factory ProductModel.fromJson(String source) => ProductModel.fromMap(json.decode(source));
 }

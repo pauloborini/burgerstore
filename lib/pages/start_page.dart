@@ -21,8 +21,7 @@ class StartPage extends StatelessWidget {
               toolbarHeight: 0,
               backgroundColor: Colors.transparent,
               systemOverlayStyle: const SystemUiOverlayStyle(
-                  statusBarIconBrightness: Brightness.light,
-                  statusBarColor: Colors.transparent),
+                  statusBarIconBrightness: Brightness.light, statusBarColor: Colors.transparent),
             ),
             body: Center(
               child: SizedBox(
@@ -31,9 +30,7 @@ class StartPage extends StatelessWidget {
                 child: Column(
                   children: [
                     const Spacer(),
-                    SizedBox(
-                        height: context.percentHeight(0.3),
-                        child: Image.asset(Assets.imagesLogo)),
+                    SizedBox(height: context.percentHeight(0.3), child: Image.asset(Assets.imagesLogo)),
                     const SizedBox(height: 73),
                     DeliveryButton(
                         width: context.percentWidth(0.7),
@@ -44,8 +41,7 @@ class StartPage extends StatelessWidget {
                         }),
                     const Spacer(),
                     SizedBox(
-                        width: double.maxFinite,
-                        child: Image.asset(Assets.imagesLanche, fit: BoxFit.fill)),
+                        width: double.maxFinite, child: Image.asset(Assets.imagesLanche, fit: BoxFit.fill)),
                   ],
                 ),
               ),

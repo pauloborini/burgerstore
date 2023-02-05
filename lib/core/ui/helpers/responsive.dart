@@ -23,13 +23,17 @@ class Responsive extends StatelessWidget {
       MediaQuery.of(context).size.height <= 400 ||
       MediaQuery.of(context).size.width <= 340;
 
-  static bool isSmall(BuildContext context) => MediaQuery.of(context).size.width <= 510;
+  static bool isSmall(BuildContext context) =>
+      MediaQuery.of(context).size.width <= 510;
 
-  static bool isMedium(BuildContext context) => MediaQuery.of(context).size.width <= 650;
+  static bool isMedium(BuildContext context) =>
+      MediaQuery.of(context).size.width <= 650;
 
-  static bool isLarge(BuildContext context) => MediaQuery.of(context).size.width < 1024;
+  static bool isLarge(BuildContext context) =>
+      MediaQuery.of(context).size.width < 1024;
 
-  static bool isXLarge(BuildContext context) => MediaQuery.of(context).size.width >= 1024;
+  static bool isXLarge(BuildContext context) =>
+      MediaQuery.of(context).size.width >= 1024;
 
   @override
   Widget build(BuildContext context) {

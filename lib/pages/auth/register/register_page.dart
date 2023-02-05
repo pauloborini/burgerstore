@@ -79,8 +79,7 @@ class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Cadastro',
-                        style: TextStyles.instance.textBold.copyWith(fontSize: 28)),
+                    Text('Cadastro', style: context.textStyles.bold.copyWith(fontSize: 28)),
                     const SizedBox(height: 20),
                     TextFormField(
                         validator: Validatorless.required('Nome Obrigatório'),
@@ -88,7 +87,7 @@ class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
                         controller: _nameController,
                         decoration: InputDecoration(
                           labelText: 'Nome Completo*',
-                          labelStyle: TextStyles.instance.textRegular,
+                          labelStyle: context.textStyles.regular,
                         )),
                     const SizedBox(height: 20),
                     TextFormField(
@@ -100,7 +99,7 @@ class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
                         controller: _emailController,
                         decoration: InputDecoration(
                           labelText: 'Email*',
-                          labelStyle: TextStyles.instance.textRegular,
+                          labelStyle: context.textStyles.regular,
                         )),
                     const SizedBox(height: 20),
                     TextFormField(
@@ -114,7 +113,7 @@ class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
                         controller: _passwordController,
                         decoration: InputDecoration(
                           labelText: 'Senha*',
-                          labelStyle: TextStyles.instance.textRegular,
+                          labelStyle: context.textStyles.regular,
                           suffixIcon: IconButton(
                             onPressed: () {
                               setState(() {
@@ -129,15 +128,14 @@ class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
                     TextFormField(
                         validator: Validatorless.multiple([
                           Validatorless.required('Senha Obrigatória'),
-                          Validatorless.compare(
-                              _passwordController, 'Senhas devem ser idênticas')
+                          Validatorless.compare(_passwordController, 'Senhas devem ser idênticas')
                         ]),
                         obscureText: _hidePassword,
                         keyboardType: TextInputType.text,
                         controller: _password2Controller,
                         decoration: InputDecoration(
                           labelText: 'Confirme a Senha*',
-                          labelStyle: TextStyles.instance.textRegular,
+                          labelStyle: context.textStyles.regular,
                           suffixIcon: IconButton(
                             onPressed: () {
                               setState(() {
@@ -156,8 +154,8 @@ class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
                         onPressed: () {
                           var formValid = _formKey.currentState?.validate() ?? false;
                           if (formValid) {
-                            controller.register(_nameController.text,
-                                _emailController.text, _passwordController.text);
+                            controller.register(
+                                _nameController.text, _emailController.text, _passwordController.text);
                             // Navigator.pushReplacementNamed(context, '/login');
                           }
                         })

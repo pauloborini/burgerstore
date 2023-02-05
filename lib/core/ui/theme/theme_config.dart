@@ -33,8 +33,10 @@ class ThemeConfig {
             statusBarIconBrightness: Brightness.dark,
           )),
       inputDecorationTheme: InputDecorationTheme(
-          labelStyle: TextStyles.instance.textRegular.copyWith(color: Colors.black87),
-          errorStyle: TextStyles.instance.textRegular.copyWith(color: Colors.redAccent),
+          labelStyle:
+              TextStyles.instance.regular.copyWith(color: Colors.black87),
+          errorStyle:
+              TextStyles.instance.regular.copyWith(color: Colors.redAccent),
           isDense: false,
           contentPadding: const EdgeInsets.only(left: 20),
           border: _defaultInputBorder,

@@ -7,12 +7,7 @@ import '../../models/product_model.dart';
 part 'home_state.g.dart';
 
 @match
-enum HomeStateStatus {
-  initial,
-  loading,
-  loaded,
-  error,
-}
+enum HomeStateStatus { initial, loading, loaded, error }
 
 class HomeState extends Equatable {
   final HomeStateStatus status;

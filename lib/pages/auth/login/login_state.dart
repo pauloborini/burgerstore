@@ -10,10 +10,7 @@ class LoginState extends Equatable {
   final LoginStatus status;
   final String? errorMessage;
 
-  const LoginState({
-    required this.status,
-    this.errorMessage,
-  });
+  const LoginState({required this.status, this.errorMessage});
 
   const LoginState.initial()
       : status = LoginStatus.initial,

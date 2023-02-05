@@ -46,6 +46,7 @@ dependencies:
   shared_preferences: 2.0.17
   modal_bottom_sheet: 2.1.2
   cupertino_icons: 1.0.5
+  flutter_awesome_select: 6.5.0
 
 
 
