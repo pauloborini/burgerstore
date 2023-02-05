@@ -35,7 +35,8 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
 
   @override
   onReady() {
-    final products = ModalRoute.of(context)!.settings.arguments as List<OrderProductDto>;
+    final products =
+        ModalRoute.of(context)!.settings.arguments as List<OrderProductDto>;
     controller.loadProducts(products);
   }
 
@@ -59,8 +60,10 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
             return state.orderProduct;
           },
           builder: (context, orderProduct) {
-            var totalBag =
-                orderProduct.fold<double>(0.0, (total, element) => total += element.totalPrice).currencyPtBR;
+            var totalBag = orderProduct
+                .fold<double>(
+                    0.0, (total, element) => total += element.totalPrice)
+                .currencyPtBR;
 
             return CustomScrollView(
               slivers: [
@@ -81,7 +84,8 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                   ),
                 ),
                 SliverList(
-                  delegate: SliverChildBuilderDelegate(childCount: orderProduct.length, (context, index) {
+                  delegate: SliverChildBuilderDelegate(
+                      childCount: orderProduct.length, (context, index) {
                     return Column(
                       children: [
                         const SizedBox(height: 10),
@@ -96,12 +100,17 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                 SliverToBoxAdapter(
                   child: Column(
                     children: [
-                      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                        Text('Total do pedido', style: context.textStyles.bold.copyWith(fontSize: 16)),
-                        Text(totalBag,
-                            style: context.textStyles.xBold
-                                .copyWith(fontSize: 20, color: context.colors.secondary)),
-                      ]),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('Total do pedido',
+                                style: context.textStyles.bold
+                                    .copyWith(fontSize: 16)),
+                            Text(totalBag,
+                                style: context.textStyles.xBold.copyWith(
+                                    fontSize: 20,
+                                    color: context.colors.secondary)),
+                          ]),
                       const Divider(
                         thickness: 1,
                         color: Colors.grey,
@@ -109,7 +118,8 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                       OrderField(
                         title: 'Endereço de Entrega',
                         controller: addressEC,
-                        validator: Validatorless.required('Endereço Obrigatório'),
+                        validator:
+                            Validatorless.required('Endereço Obrigatório'),
                         hintText: 'Digite o endereço',
                         keyboardType: TextInputType.text,
                       ),
@@ -136,7 +146,10 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                           thickness: 1,
                           color: Colors.grey,
                         ),
-                        DeliveryButton(width: double.maxFinite, label: 'FINALIZAR', onPressed: () {})
+                        DeliveryButton(
+                            width: double.maxFinite,
+                            label: 'FINALIZAR',
+                            onPressed: () {})
                       ],
                     ),
                   ),

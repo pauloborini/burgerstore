@@ -1,4 +1,6 @@
 import 'package:burgerstore/pages/order/order_controller.dart';
+import 'package:burgerstore/repositories/order_repository/order_repository.dart';
+import 'package:burgerstore/repositories/order_repository/order_repository_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,7 +11,8 @@ class OrderRoute {
 
   static Widget get page => MultiProvider(
         providers: [
-          Provider(create: (context) => OrderController()),
+          Provider(create: (context) => OrderController(context.read())),
+          Provider<OrderRepository>(create: (context) => OrderRepositoryImpl(dio: context.read())),
         ],
         child: const OrderPage(),
       );

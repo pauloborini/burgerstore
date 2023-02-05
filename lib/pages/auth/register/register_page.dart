@@ -79,7 +79,8 @@ class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Cadastro', style: context.textStyles.bold.copyWith(fontSize: 28)),
+                    Text('Cadastro',
+                        style: context.textStyles.bold.copyWith(fontSize: 28)),
                     const SizedBox(height: 20),
                     TextFormField(
                         validator: Validatorless.required('Nome Obrigatório'),
@@ -105,8 +106,10 @@ class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
                     TextFormField(
                         validator: Validatorless.multiple([
                           Validatorless.required('Senha Obrigatória'),
-                          Validatorless.min(4, 'Senha deve ter no mínimo 4 caracteres'),
-                          Validatorless.max(20, 'Senha pode ter no máximo 20 caracteres')
+                          Validatorless.min(
+                              4, 'Senha deve ter no mínimo 4 caracteres'),
+                          Validatorless.max(
+                              20, 'Senha pode ter no máximo 20 caracteres')
                         ]),
                         obscureText: _hidePassword,
                         keyboardType: TextInputType.text,
@@ -128,7 +131,8 @@ class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
                     TextFormField(
                         validator: Validatorless.multiple([
                           Validatorless.required('Senha Obrigatória'),
-                          Validatorless.compare(_passwordController, 'Senhas devem ser idênticas')
+                          Validatorless.compare(
+                              _passwordController, 'Senhas devem ser idênticas')
                         ]),
                         obscureText: _hidePassword,
                         keyboardType: TextInputType.text,
@@ -152,10 +156,13 @@ class _RegisterPageState extends BaseState<RegisterPage, RegisterController> {
                         height: 50,
                         label: 'CADASTRAR',
                         onPressed: () {
-                          var formValid = _formKey.currentState?.validate() ?? false;
+                          var formValid =
+                              _formKey.currentState?.validate() ?? false;
                           if (formValid) {
                             controller.register(
-                                _nameController.text, _emailController.text, _passwordController.text);
+                                _nameController.text,
+                                _emailController.text,
+                                _passwordController.text);
                             // Navigator.pushReplacementNamed(context, '/login');
                           }
                         })

@@ -9,7 +9,9 @@ class LoginRoute {
 
   static Widget get page => MultiProvider(
         providers: [
-          Provider(create: (context) => LoginController(authRepository: context.read())),
+          Provider(
+              create: (context) =>
+                  LoginController(authRepository: context.read())),
         ],
         child: const LoginPage(),
       );

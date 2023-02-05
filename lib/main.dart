@@ -29,7 +29,7 @@ class BurgerApp extends StatelessWidget {
     return AppProviders(
       child: MaterialApp(
         scrollBehavior: MyCustomScrollBehavior(),
-        title: 'Vakina Burger',
+        title: 'Vakinha Burger',
         theme: ThemeConfig.theme,
         debugShowCheckedModeBanner: false,
         initialRoute: "/",

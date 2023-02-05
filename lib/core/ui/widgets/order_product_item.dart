@@ -12,7 +12,8 @@ class OrderProductItem extends StatelessWidget {
   final int index;
   final OrderProductDto orderProduct;
 
-  const OrderProductItem({super.key, required this.index, required this.orderProduct});
+  const OrderProductItem(
+      {super.key, required this.index, required this.orderProduct});
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +22,15 @@ class OrderProductItem extends StatelessWidget {
         children: [
           Row(
             children: [
-              Expanded(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(7),
-                  child: SizedBox(
-                    child: FadeInImage.assetNetwork(
-                        fit: BoxFit.cover,
-                        placeholder: Assets.imagesLoading,
-                        image: orderProduct.product.image),
-                  ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(7),
+                child: SizedBox(
+                  height: 70,
+                  width: 110,
+                  child: FadeInImage.assetNetwork(
+                      fit: BoxFit.cover,
+                      placeholder: Assets.imagesLoading,
+                      image: orderProduct.product.image),
                 ),
               ),
               Expanded(
@@ -44,24 +45,23 @@ class OrderProductItem extends StatelessWidget {
                         children: [
                           SizedBox(
                             width: context.percentWidth(0.59),
-                            child: AutoSizeText(
-                              orderProduct.product.name,
-                              maxLines: 2,
-                              maxFontSize: 16,
-                              minFontSize: 10,
-                              style: context.textStyles.medium.copyWith(fontSize: 16),
-                            ),
+                            child: AutoSizeText(orderProduct.product.name,
+                                maxLines: 2,
+                                maxFontSize: 16,
+                                minFontSize: 10,
+                                style: context.textStyles.medium
+                                    .copyWith(fontSize: 16)),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 2),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            orderProduct.product.price.currencyPtBR,
-                            style: context.textStyles.bold.copyWith(fontSize: 16),
-                          ),
+                          AutoSizeText(
+                              (orderProduct.amount * orderProduct.product.price)
+                                  .currencyPtBR,
+                              style: context.textStyles.bold
+                                  .copyWith(fontSize: 16)),
                           AmountButton(
                             isLittle: true,
                             amount: orderProduct.amount,

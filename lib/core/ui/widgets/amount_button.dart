@@ -29,7 +29,8 @@ class AmountButton extends StatelessWidget {
             width: width,
             height: height,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(7), border: Border.all(width: 1, color: Colors.grey)),
+                borderRadius: BorderRadius.circular(7),
+                border: Border.all(width: 1, color: Colors.grey)),
             padding: const EdgeInsets.fromLTRB(8, 0, 8, 1),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,

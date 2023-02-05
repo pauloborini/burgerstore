@@ -10,9 +10,14 @@ class Assets {
   static const String imagesSplashFundo = 'assets/images/splash_fundo.png';
   static const String imagesTrashRegular = 'assets/images/trashRegular.png';
   static const String imagesXSalada = 'assets/images/x-salada.jpg';
-  static const String mplus1MPLUS1pBold = 'assets/fonts/mplus1/MPLUS1p-Bold.ttf';
-  static const String mplus1MPLUS1pExtraBold = 'assets/fonts/mplus1/MPLUS1p-ExtraBold.ttf';
-  static const String mplus1MPLUS1pLight = 'assets/fonts/mplus1/MPLUS1p-Light.ttf';
-  static const String mplus1MPLUS1pMedium = 'assets/fonts/mplus1/MPLUS1p-Medium.ttf';
-  static const String mplus1MPLUS1pRegular = 'assets/fonts/mplus1/MPLUS1p-Regular.ttf';
+  static const String mplus1MPLUS1pBold =
+      'assets/fonts/mplus1/MPLUS1p-Bold.ttf';
+  static const String mplus1MPLUS1pExtraBold =
+      'assets/fonts/mplus1/MPLUS1p-ExtraBold.ttf';
+  static const String mplus1MPLUS1pLight =
+      'assets/fonts/mplus1/MPLUS1p-Light.ttf';
+  static const String mplus1MPLUS1pMedium =
+      'assets/fonts/mplus1/MPLUS1p-Medium.ttf';
+  static const String mplus1MPLUS1pRegular =
+      'assets/fonts/mplus1/MPLUS1p-Regular.ttf';
 }

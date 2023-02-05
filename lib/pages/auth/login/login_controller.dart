@@ -10,7 +10,8 @@ import 'login_state.dart';
 class LoginController extends Cubit<LoginState> {
   final AuthRepository authRepository;
 
-  LoginController({required this.authRepository}) : super(const LoginState.initial());
+  LoginController({required this.authRepository})
+      : super(const LoginState.initial());
 
   Future<void> login(String email, String password) async {
     try {
@@ -22,10 +23,12 @@ class LoginController extends Cubit<LoginState> {
       emit(state.copyWith(status: LoginStatus.success));
     } on UnauthorizedException catch (e, s) {
       log('Login ou senha inválidos', error: e, stackTrace: s);
-      emit(state.copyWith(status: LoginStatus.error, errorMessage: 'Login ou senha inválidos'));
+      emit(state.copyWith(
+          status: LoginStatus.error, errorMessage: 'Login ou senha inválidos'));
     } catch (e, s) {
       log('Erro ao realizar login', error: e, stackTrace: s);
-      emit(state.copyWith(status: LoginStatus.error, errorMessage: 'Erro ao realizar login'));
+      emit(state.copyWith(
+          status: LoginStatus.error, errorMessage: 'Erro ao realizar login'));
     }
   }
 }

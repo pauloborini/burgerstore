@@ -38,7 +38,8 @@ class _PaymentTypesFieldState extends State<PaymentTypesField> {
                         children: [
                           Text(
                             state.selected.title ?? 'Formas de pagamento',
-                            style: context.textStyles.medium.copyWith(fontSize: 18),
+                            style: context.textStyles.medium
+                                .copyWith(fontSize: 18),
                           ),
                           const Icon(Icons.arrow_drop_down_circle_outlined)
                         ],

@@ -11,7 +11,8 @@ class AuthModel {
 
   String toJson() => json.encode(toMap());
 
-  factory AuthModel.fromJson(String source) => AuthModel.fromMap(json.decode(source));
+  factory AuthModel.fromJson(String source) =>
+      AuthModel.fromMap(json.decode(source));
 
   Map<String, dynamic> toMap() {
     return {

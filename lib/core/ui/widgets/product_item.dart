@@ -15,15 +15,17 @@ class ProductItem extends StatelessWidget {
   final ProductModel product;
   final OrderProductDto? orderProduct;
 
-  const ProductItem({super.key, required this.product, required this.orderProduct});
+  const ProductItem(
+      {super.key, required this.product, required this.orderProduct});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
         final controller = context.read<HomeController>();
-        final orderProductResult = await Navigator.of(context)
-            .pushNamed('/product_detail', arguments: {'product': product, 'order': orderProduct});
+        final orderProductResult = await Navigator.of(context).pushNamed(
+            '/product_detail',
+            arguments: {'product': product, 'order': orderProduct});
         if (orderProductResult != null) {
           controller.crudBag(orderProductResult as OrderProductDto);
         }
@@ -56,7 +58,8 @@ class ProductItem extends StatelessWidget {
                           child: AutoSizeText(product.name,
                               minFontSize: 12,
                               maxLines: 2,
-                              style: context.textStyles.xBold.copyWith(fontSize: 16)),
+                              style: context.textStyles.xBold
+                                  .copyWith(fontSize: 16)),
                         ),
                         const Spacer(),
                         SizedBox(
@@ -64,14 +67,15 @@ class ProductItem extends StatelessWidget {
                           child: AutoSizeText(
                             product.description,
                             minFontSize: 11,
-                            style: context.textStyles.regular.copyWith(fontSize: 14),
+                            style: context.textStyles.regular
+                                .copyWith(fontSize: 14),
                             maxLines: 4,
                           ),
                         ),
                         const Spacer(),
                         Text(product.price.currencyPtBR,
-                            style: context.textStyles.bold
-                                .copyWith(fontSize: 16, color: context.colors.secondary)),
+                            style: context.textStyles.bold.copyWith(
+                                fontSize: 16, color: context.colors.secondary)),
                         const Spacer(),
                       ],
                     ),

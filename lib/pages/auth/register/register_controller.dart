@@ -8,7 +8,8 @@ import 'register_state.dart';
 class RegisterController extends Cubit<RegisterState> {
   final AuthRepository _authRepository;
 
-  RegisterController(this._authRepository) : super(const RegisterState.initial());
+  RegisterController(this._authRepository)
+      : super(const RegisterState.initial());
 
   Future<void> register(String name, String email, String password) async {
     try {

@@ -19,7 +19,8 @@ class OrderField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const defaultBorder = UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey));
+    const defaultBorder =
+        UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
