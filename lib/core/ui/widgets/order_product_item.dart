@@ -3,7 +3,9 @@ import 'package:burgerstore/core/extensions/formatter_extension.dart';
 import 'package:burgerstore/core/ui/helpers/responsive.dart';
 import 'package:burgerstore/core/ui/widgets/amount_button.dart';
 import 'package:burgerstore/dto/order_product_dto.dart';
+import 'package:burgerstore/pages/order/order_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../generated/assets.dart';
 import '../styles/text_styles.dart';
@@ -65,7 +67,9 @@ class OrderProductItem extends StatelessWidget {
                           AmountButton(
                             isLittle: true,
                             amount: orderProduct.amount,
-                            incrementTap: () {},
+                            incrementTap: () {
+                              context.read<OrderController>().incrementProduct(index);
+                            },
                             decrementTap: () {},
                           ),
                         ],

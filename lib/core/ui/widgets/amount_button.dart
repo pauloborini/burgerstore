@@ -7,13 +7,13 @@ import '../styles/text_styles.dart';
 class AmountButton extends StatelessWidget {
   final double? width;
   final double? height;
-  bool isLittle;
+  final bool isLittle;
 
   final int amount;
   final VoidCallback incrementTap;
   final VoidCallback decrementTap;
 
-  AmountButton(
+  const AmountButton(
       {super.key,
       this.isLittle = false,
       this.width,

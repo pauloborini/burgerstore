@@ -1,6 +1,7 @@
 import 'package:burgerstore/core/ui/theme/custom_scroll_behavior.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/config/env/env.dart';
 import 'core/provider/app_providers.dart';
@@ -14,14 +15,16 @@ import 'pages/start_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final sp = await SharedPreferences.getInstance();
   await Env.instance.load();
-  runApp(const BurgerApp());
+  runApp( BurgerApp(sp: sp,));
 }
 
 ///APP
 
 class BurgerApp extends StatelessWidget {
-  const BurgerApp({super.key});
+  final SharedPreferences sp;
+  const BurgerApp({super.key, required this.sp});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +37,7 @@ class BurgerApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: "/",
         routes: {
-          "/": (context) => const StartPage(),
+          "/": (context) => StartPage(sp: sp,),
           "/home": (context) => HomeRoute.page,
           "/product_detail": (context) => ProductDetailRoute.page,
           "/login": (context) => LoginRoute.page,

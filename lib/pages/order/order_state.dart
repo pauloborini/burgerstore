@@ -2,40 +2,46 @@ import 'package:equatable/equatable.dart';
 import 'package:match/match.dart';
 
 import '../../dto/order_product_dto.dart';
+import '../../models/payment_type_model.dart';
 
 part 'order_state.g.dart';
 
 @match
-enum OrderStatus { initial, loading, loaded, errorLoading }
+enum OrderStatus { initial, loading, loaded, errorLoading, error401, updateOrder }
 
 class OrderState extends Equatable {
-  final OrderStatus status;
   final String? errorMessage;
-  final List<OrderProductDto> orderProduct;
+  final OrderStatus status;
+  final List<OrderProductDto> orderProducts;
+  final List<PaymentTypeModel> paymentTypes;
 
   const OrderState({
-    required this.status,
     this.errorMessage,
-    required this.orderProduct,
+    required this.status,
+    required this.orderProducts,
+    required this.paymentTypes,
   });
 
   const OrderState.initial()
       : status = OrderStatus.initial,
-        orderProduct = const [],
-        errorMessage = null;
+        errorMessage = null,
+        orderProducts = const [],
+        paymentTypes = const [];
 
   @override
-  List<Object> get props => [status, orderProduct];
+  List<Object> get props => [status, orderProducts, paymentTypes];
 
   OrderState copyWith({
-    OrderStatus? status,
     String? errorMessage,
-    List<OrderProductDto>? orderProduct,
+    OrderStatus? status,
+    List<OrderProductDto>? orderProducts,
+    List<PaymentTypeModel>? paymentTypes,
   }) {
     return OrderState(
-      status: status ?? this.status,
       errorMessage: errorMessage ?? this.errorMessage,
-      orderProduct: orderProduct ?? this.orderProduct,
+      status: status ?? this.status,
+      orderProducts: orderProducts ?? this.orderProducts,
+      paymentTypes: paymentTypes ?? this.paymentTypes,
     );
   }
 }
