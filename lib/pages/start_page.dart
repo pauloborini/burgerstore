@@ -44,7 +44,6 @@ class _StartPageState extends State<StartPage> {
                         height: context.percentHeight(0.3),
                         child: Image.asset(Assets.imagesLogo)),
                     const Spacer(),
-
                     DeliveryButton(
                         width: context.percentWidth(0.7),
                         height: 34.12,
@@ -54,6 +53,7 @@ class _StartPageState extends State<StartPage> {
                         }),
                     const SizedBox(height: 20),
                     DeliveryButton(
+
                         color: !widget.sp.containsKey('access_token')
                             ? context.colors.primary
                             : Colors.blueAccent,
@@ -73,7 +73,6 @@ class _StartPageState extends State<StartPage> {
                           }
                         }),
                     const Spacer(),
-
                     SizedBox(
                         width: double.maxFinite,
                         child:

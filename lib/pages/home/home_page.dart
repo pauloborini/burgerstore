@@ -20,7 +20,6 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
   @override
   onReady() {
     controller.loadProducts();
-    return super.onReady();
   }
 
   @override

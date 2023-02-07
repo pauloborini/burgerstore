@@ -7,7 +7,16 @@ import '../../models/payment_type_model.dart';
 part 'order_state.g.dart';
 
 @match
-enum OrderStatus { initial, loading, loaded, errorLoading, error401, updateOrder }
+enum OrderStatus {
+  initial,
+  loading,
+  loaded,
+  errorLoading,
+  updateOrder,
+  confirmRemoveProduct,
+  emptyBag,
+  success,
+}
 
 class OrderState extends Equatable {
   final String? errorMessage;
@@ -28,6 +37,9 @@ class OrderState extends Equatable {
         orderProducts = const [],
         paymentTypes = const [];
 
+  double get totalOrder => orderProducts.fold<double>(
+      0.0, (total, element) => total += element.totalPrice);
+
   @override
   List<Object> get props => [status, orderProducts, paymentTypes];
 
@@ -44,4 +56,18 @@ class OrderState extends Equatable {
       paymentTypes: paymentTypes ?? this.paymentTypes,
     );
   }
+}
+
+class OrderDeleteProductState extends OrderState {
+  final OrderProductDto orderProduct;
+  final int index;
+
+  const OrderDeleteProductState({
+    required this.orderProduct,
+    required this.index,
+    required super.errorMessage,
+    required super.status,
+    required super.orderProducts,
+    required super.paymentTypes,
+  });
 }

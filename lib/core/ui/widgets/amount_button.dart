@@ -79,14 +79,14 @@ class AmountButton extends StatelessWidget {
                   onTap: decrementTap,
                   child: Icon(
                     CupertinoIcons.minus,
-                    size: 12,
+                    size: 14,
                     color: context.colors.secondary,
                   ),
                 ),
                 Text(
                   amount.toString(),
                   style: context.textStyles.medium.copyWith(
-                    fontSize: 12,
+                    fontSize: 14,
                     color: context.colors.secondary,
                   ),
                 ),
@@ -94,7 +94,7 @@ class AmountButton extends StatelessWidget {
                   onTap: incrementTap,
                   child: Icon(
                     CupertinoIcons.add,
-                    size: 12,
+                    size: 14,
                     color: context.colors.secondary,
                   ),
                 ),

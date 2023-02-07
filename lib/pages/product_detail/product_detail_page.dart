@@ -26,6 +26,7 @@ class ProductDetailPage extends StatefulWidget {
 
 class _ProductDetailPageState
     extends BaseState<ProductDetailPage, ProductDetailController> {
+
   void _showConfirmDelete(int amount) {
     showDialog(
         context: context,
@@ -44,7 +45,7 @@ class _ProductDetailPageState
                   child: Text(
                     'Não',
                     style: context.textStyles.medium
-                        .copyWith(fontSize: 16, color: Colors.red),
+                        .copyWith(fontSize: 19, color: Colors.black),
                   )),
               TextButton(
                   onPressed: () {
@@ -55,7 +56,7 @@ class _ProductDetailPageState
                   child: Text(
                     'Sim',
                     style: context.textStyles.medium
-                        .copyWith(fontSize: 16, color: Colors.green),
+                        .copyWith(fontSize: 19, color: Colors.black),
                   ))
             ],
           );

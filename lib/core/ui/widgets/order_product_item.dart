@@ -68,9 +68,15 @@ class OrderProductItem extends StatelessWidget {
                             isLittle: true,
                             amount: orderProduct.amount,
                             incrementTap: () {
-                              context.read<OrderController>().incrementProduct(index);
+                              context
+                                  .read<OrderController>()
+                                  .incrementProduct(index);
                             },
-                            decrementTap: () {},
+                            decrementTap: () {
+                              context
+                                  .read<OrderController>()
+                                  .decrementProduct(index);
+                            },
                           ),
                         ],
                       ),

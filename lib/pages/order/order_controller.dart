@@ -1,7 +1,7 @@
 import 'dart:developer';
 
+import 'package:burgerstore/dto/order_dto.dart';
 import 'package:burgerstore/dto/order_product_dto.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../repositories/order_repository/order_repository.dart';
@@ -20,12 +20,6 @@ class OrderController extends Cubit<OrderState> {
           orderProducts: products,
           paymentTypes: paymentsTypes,
           status: OrderStatus.loaded));
-    } on DioError catch (e, s) {
-      if (e.response?.statusCode == 401) {
-        log('Conexão Expirou, efetue novamente o Login',
-            error: e, stackTrace: s);
-        emit(state.copyWith(status: OrderStatus.error401));
-      }
     } catch (e, s) {
       log('Erro ao buscar métodos de pagamento', error: e, stackTrace: s);
       emit(state.copyWith(status: OrderStatus.errorLoading));
@@ -39,15 +33,59 @@ class OrderController extends Cubit<OrderState> {
     emit(
         state.copyWith(orderProducts: orders, status: OrderStatus.updateOrder));
   }
+
   decrementProduct(int index) {
     final orders = [...state.orderProducts];
     final order = orders[index];
     final amount = order.amount;
-    if(amount == 1 ){
-
+    if (amount == 1) {
+      if (state.status != OrderStatus.confirmRemoveProduct) {
+        emit(OrderDeleteProductState(
+            orderProduct: order,
+            index: index,
+            errorMessage: state.errorMessage,
+            status: OrderStatus.confirmRemoveProduct,
+            orderProducts: state.orderProducts,
+            paymentTypes: state.paymentTypes));
+        return;
+      } else {
+        orders.removeAt(index);
+      }
+    } else {
+      orders[index] = order.copyWith(amount: order.amount - 1);
     }
-    orders[index] = order.copyWith(amount: order.amount + 1);
+    if (orders.isEmpty) {
+      emit(state.copyWith(status: OrderStatus.emptyBag));
+      return;
+    }
     emit(
         state.copyWith(orderProducts: orders, status: OrderStatus.updateOrder));
+  }
+
+  cancelDeleteProcess() {
+    emit(state.copyWith(status: OrderStatus.loaded));
+  }
+
+  emptyBag() {
+    emit(state.copyWith(status: OrderStatus.emptyBag));
+  }
+
+  clearBag() {
+    emit(state.copyWith(
+        orderProducts: <OrderProductDto>[], status: OrderStatus.initial));
+  }
+
+  Future<void> saveOrder(
+      {required List<OrderProductDto> products,
+      required String address,
+      required String document,
+      required int paymentMethodId}) async {
+    emit(state.copyWith(status: OrderStatus.loading));
+    await _orderRepository.saveOrder(OrderDto(
+        products: products,
+        address: address,
+        document: document,
+        paymentMethodId: paymentMethodId));
+    emit(state.copyWith(status: OrderStatus.success));
   }
 }
