@@ -42,7 +42,7 @@ Link para dúvidas:
 https://pub.dev/packages/json_rest_server
 
 Ao abrir o projeto executar o `pub get` no arquivo pubspec.yaml e depois rodar no
-emulador ou browser.
+emulador.
 
 
 ---
