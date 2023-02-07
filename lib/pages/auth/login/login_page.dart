@@ -92,13 +92,10 @@ class _LoginPageState extends BaseState<LoginPage, LoginController> {
                       SizedBox(
                         width: double.infinity,
                         height: MediaQuery.of(context).size.height * 0.12,
-                        child:
-                            Image.asset(Assets.imagesLogo, fit: BoxFit.contain),
+                        child: Image.asset(Assets.imagesLogo, fit: BoxFit.contain),
                       ),
                       const SizedBox(height: 15),
-                      Text('Login',
-                          style:
-                              context.textStyles.xBold.copyWith(fontSize: 28)),
+                      Text('Login', style: context.textStyles.xBold.copyWith(fontSize: 28)),
                       const SizedBox(height: 20),
                       TextFormField(
                           keyboardType: TextInputType.emailAddress,
@@ -118,8 +115,7 @@ class _LoginPageState extends BaseState<LoginPage, LoginController> {
                           controller: _passwordController,
                           validator: Validatorless.multiple([
                             Validatorless.required('Senha Obrigatória'),
-                            Validatorless.max(
-                                20, 'Senha pode ter no máximo 20 caracteres')
+                            Validatorless.max(20, 'Senha pode ter no máximo 20 caracteres')
                           ]),
                           decoration: InputDecoration(
                             labelText: 'Senha',
@@ -139,9 +135,7 @@ class _LoginPageState extends BaseState<LoginPage, LoginController> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           TextButton(
-                            style: ButtonStyle(
-                                overlayColor: MaterialStateProperty.all(
-                                    Colors.transparent)),
+                            style: ButtonStyle(overlayColor: MaterialStateProperty.all(Colors.transparent)),
                             onPressed: () {},
                             child: Text('Esqueceu a senha?',
                                 textAlign: TextAlign.right,
@@ -158,11 +152,9 @@ class _LoginPageState extends BaseState<LoginPage, LoginController> {
                           width: double.maxFinite,
                           label: 'ENTRAR',
                           onPressed: () {
-                            var formValid =
-                                _formKey.currentState?.validate() ?? false;
+                            var formValid = _formKey.currentState?.validate() ?? false;
                             if (formValid) {
-                              controller.login(_emailController.text,
-                                  _passwordController.text);
+                              controller.login(_emailController.text, _passwordController.text);
                             }
                           }),
                       const SizedBox(height: 15),
@@ -171,19 +163,16 @@ class _LoginPageState extends BaseState<LoginPage, LoginController> {
                         children: [
                           Text(
                             'Não possui conta?',
-                            style: context.textStyles.medium
-                                .copyWith(fontSize: 16),
+                            style: context.textStyles.medium.copyWith(fontSize: 16),
                           ),
                           TextButton(
                               onPressed: () {
                                 showBarModalBottomSheet(
-                                    context: context,
-                                    builder: (context) => RegisterRoute.page);
+                                    context: context, builder: (context) => RegisterRoute.page);
                               },
                               child: Text(
                                 'Cadastre-se',
-                                style: context.textStyles.bold
-                                    .copyWith(fontSize: 16),
+                                style: context.textStyles.bold.copyWith(fontSize: 16),
                               ))
                         ],
                       ),

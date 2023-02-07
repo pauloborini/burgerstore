@@ -1,4 +1,3 @@
-import 'package:burgerstore/core/ui/styles/colors_app.dart';
 import 'package:flutter/material.dart';
 
 class DeliveryButton extends StatelessWidget {
@@ -8,7 +7,7 @@ class DeliveryButton extends StatelessWidget {
   final double? height;
   final Color? color;
 
-  DeliveryButton({
+  const DeliveryButton({
     super.key,
     required this.label,
     required this.onPressed,
