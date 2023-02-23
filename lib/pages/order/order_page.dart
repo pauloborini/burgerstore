@@ -4,6 +4,7 @@ import 'package:burgerstore/models/payment_type_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:validatorless/validatorless.dart';
+
 import '../../core/ui/base_state/base_state.dart';
 import '../../core/ui/styles/text_styles.dart';
 import '../../core/ui/widgets/base_appbar.dart';
@@ -38,8 +39,7 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
 
   @override
   onReady() {
-    final products =
-        ModalRoute.of(context)!.settings.arguments as List<OrderProductDto>;
+    final products = ModalRoute.of(context)!.settings.arguments as List<OrderProductDto>;
     controller.loadProducts(products);
   }
 
@@ -53,16 +53,14 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
             actions: [
               TextButton(
                   style: ButtonStyle(
-                      overlayColor: MaterialStatePropertyAll(
-                          Colors.red.withOpacity(0.1))),
+                      overlayColor: MaterialStatePropertyAll(Colors.red.withOpacity(0.1))),
                   onPressed: () {
                     Navigator.of(context).pop(false);
                     controller.cancelDeleteProcess();
                   },
                   child: Text(
                     'Não',
-                    style: context.textStyles.medium
-                        .copyWith(fontSize: 19, color: Colors.black),
+                    style: context.textStyles.medium.copyWith(fontSize: 19, color: Colors.black),
                   )),
               TextButton(
                   onPressed: () {
@@ -71,8 +69,7 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                   },
                   child: Text(
                     'Sim',
-                    style: context.textStyles.medium
-                        .copyWith(fontSize: 19, color: Colors.black),
+                    style: context.textStyles.medium.copyWith(fontSize: 19, color: Colors.black),
                   ))
             ],
           );
@@ -91,12 +88,10 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                     Navigator.pop(context);
                   },
                   style: ButtonStyle(
-                      overlayColor: MaterialStatePropertyAll(
-                          Colors.red.withOpacity(0.1))),
+                      overlayColor: MaterialStatePropertyAll(Colors.red.withOpacity(0.1))),
                   child: Text(
                     'Não',
-                    style: context.textStyles.medium
-                        .copyWith(fontSize: 19, color: Colors.black),
+                    style: context.textStyles.medium.copyWith(fontSize: 19, color: Colors.black),
                   )),
               TextButton(
                   onPressed: () {
@@ -105,8 +100,7 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                   },
                   child: Text(
                     'Sim',
-                    style: context.textStyles.medium
-                        .copyWith(fontSize: 19, color: Colors.black),
+                    style: context.textStyles.medium.copyWith(fontSize: 19, color: Colors.black),
                   ))
             ],
           );
@@ -164,8 +158,7 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
           body: Container(
             constraints: const BoxConstraints(maxWidth: 1440),
             padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
-            child: BlocSelector<OrderController, OrderState,
-                List<OrderProductDto>>(
+            child: BlocSelector<OrderController, OrderState, List<OrderProductDto>>(
               selector: (state) {
                 return state.orderProducts;
               },
@@ -179,8 +172,7 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                           children: [
                             Text(
                               'Carrinho',
-                              style: context.textStyles.xBold
-                                  .copyWith(fontSize: 28),
+                              style: context.textStyles.xBold.copyWith(fontSize: 28),
                             ),
                             IconButton(
                                 onPressed: () => _showDialogClearBag(),
@@ -192,8 +184,8 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                         ),
                       ),
                       SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                            childCount: orderProducts.length, (context, index) {
+                        delegate: SliverChildBuilderDelegate(childCount: orderProducts.length,
+                            (context, index) {
                           return Column(
                             children: [
                               const SizedBox(height: 10),
@@ -208,26 +200,18 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                       SliverToBoxAdapter(
                         child: Column(
                           children: [
-                            Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Total do pedido',
-                                      style: context.textStyles.bold
-                                          .copyWith(fontSize: 16)),
-                                  BlocSelector<OrderController, OrderState,
-                                      double>(
-                                    selector: (state) => state.totalOrder,
-                                    builder: (context, totalOrder) {
-                                      return Text(totalOrder.currencyPtBR,
-                                          style: context.textStyles.xBold
-                                              .copyWith(
-                                                  fontSize: 20,
-                                                  color: context
-                                                      .colors.secondary));
-                                    },
-                                  ),
-                                ]),
+                            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                              Text('Total do pedido',
+                                  style: context.textStyles.bold.copyWith(fontSize: 16)),
+                              BlocSelector<OrderController, OrderState, double>(
+                                selector: (state) => state.totalOrder,
+                                builder: (context, totalOrder) {
+                                  return Text(totalOrder.currencyPtBR,
+                                      style: context.textStyles.xBold
+                                          .copyWith(fontSize: 20, color: context.colors.secondary));
+                                },
+                              ),
+                            ]),
                             const Divider(
                               thickness: 1,
                               color: Colors.grey,
@@ -235,8 +219,7 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                             OrderField(
                               title: 'Endereço de Entrega',
                               controller: _addressEC,
-                              validator: Validatorless.required(
-                                  'Endereço Obrigatório'),
+                              validator: Validatorless.required('Endereço Obrigatório'),
                               hintText: 'Digite o endereço',
                               keyboardType: TextInputType.text,
                             ),
@@ -244,15 +227,14 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                             OrderField(
                               title: 'CPF',
                               controller: _documentEC,
-                              validator:
-                                  Validatorless.required('CPF Obrigatório'),
+                              validator: Validatorless.required('CPF Obrigatório'),
                               hintText: 'Digite o CPF',
                               keyboardType: TextInputType.number,
                             ),
                             SizedBox(
                               width: double.maxFinite,
-                              child: BlocSelector<OrderController, OrderState,
-                                  List<PaymentTypeModel>>(
+                              child:
+                                  BlocSelector<OrderController, OrderState, List<PaymentTypeModel>>(
                                 selector: (state) => state.paymentTypes,
                                 builder: (context, paymentTypes) {
                                   return PaymentTypesField(
@@ -286,12 +268,8 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                                   width: double.maxFinite,
                                   label: 'FINALIZAR',
                                   onPressed: () {
-                                    var formValid =
-                                        _formKey.currentState?.validate() ??
-                                            false;
-                                    if (formValid &&
-                                        paymentTypeId != null &&
-                                        paymentSelected) {
+                                    var formValid = _formKey.currentState?.validate() ?? false;
+                                    if (formValid && paymentTypeId != null && paymentSelected) {
                                       controller.saveOrder(
                                           products: orderProducts,
                                           address: _addressEC.text,
